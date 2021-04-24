@@ -1,0 +1,26 @@
+
+
+<table class="table">
+<thead class="thead-dark">
+    <tr>
+    <th scope="col">{{"Id"}}</th>
+    <th scope="col">{{"CName"}}</th>
+    <th scope="col">{{"Email"}}</th>
+    <th scope="col">{{"Phone"}}</th>
+    <th scope="col">{{"Address"}}</th>
+    </tr>
+</thead>
+<tbody>
+    <tr *ngFor="let customer of customers">
+        <td>{{customer.id}}</td>
+        <td>
+            <a [routerLink]="['/customers/',customer.id]" routerLinkActive="active">
+            {{customer.cName}}</a>
+        </td>
+        <td>{{customer.email}}</td>
+        <td>{{customer.phone}}</td>
+        <td>{{customer.address}}</td>
+
+    </tr>
+</tbody>
+</table>

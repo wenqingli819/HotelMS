@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <h3>Account</h3>
+    </div>
+    <div class="row">
+        <span class="font-weight-bold">{{customer?.cName}}</span>
+        <span>, {{customer?.email}}
+        </span>
+    </div>
+
+    <div class="row">
+        <div class="col-sm" style= "margin-top: 34px;">
+        <h5>Room</h5>
+        <ul class="list-group" *ngFor = "let service of customer?.services">
+                <li class="list-group-item">Room No : {{service.room.id}}</li>
+                <li class="list-group-item"> Room Type : {{service.room.roomTypeId}}
+                <li class="list-group-item"> Status : {{service.room.status}}</li>
+        </ul>
+        </div>
+
+
+        <div class="col-sm" style= "margin-top: 34px;">
+            <h5> Service </h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Service Date</th>
+                      <th scope="col">Check In</th>
+                      <th scope="col">Total Person</th>
+                      <th scope="col">Booking Days</th>
+                      <th scope="col">Advance</th>
+                      <th scope="col">Total Amount</th>
+                    </tr>
+                  </thead>
+            <tbody>
+              <tr *ngFor="let service of customer?.services">
+                <td> {{service.id}} </td>
+                <td> {{service.sDesc}}</td>
+                <td> {{service.serviceDate | date:'MMM d, y, h:mm:ss a'}}</td>
+                <td> {{service.checkIn | date:'MMM d, y, h:mm:ss a'}}</td>
+                <td> {{service.totalPersons}}</td>
+                <td> {{service.bookingDays}}</td>
+                <td> {{service.advance}}</td>
+                <td> {{service.amount}}</td>
+              </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+  </div>
+
+
+</div>
