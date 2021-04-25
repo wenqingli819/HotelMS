@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(HotelDbContext))]
-    [Migration("20210424044417_AllowMoreNulls")]
-    partial class AllowMoreNulls
+    [Migration("20210425144415_initial")]
+    partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,18 +32,9 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
-                    b.Property<decimal?>("Advance")
-                        .HasColumnType("decimal(10,2)");
-
-                    b.Property<int?>("BookingDays")
-                        .HasColumnType("int");
-
                     b.Property<string>("CName")
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
-
-                    b.Property<DateTime?>("CheckIn")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("Email")
                         .HasMaxLength(40)
@@ -53,19 +44,11 @@ namespace Infrastructure.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TotalPersons")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique()
                         .HasFilter("[Email] IS NOT NULL");
-
-                    b.HasIndex("RoomId");
 
                     b.ToTable("Customer");
                 });
@@ -97,8 +80,17 @@ namespace Infrastructure.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<decimal?>("Advance")
+                        .HasColumnType("decimal(10,2)");
+
                     b.Property<decimal?>("Amount")
                         .HasColumnType("decimal(10,2)");
+
+                    b.Property<int?>("BookingDays")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("CheckIn")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("CustomerId")
                         .HasColumnType("int");
@@ -112,6 +104,9 @@ namespace Infrastructure.Migrations
 
                     b.Property<DateTime?>("ServiceDate")
                         .HasColumnType("datetime2");
+
+                    b.Property<int?>("TotalPersons")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -141,24 +136,13 @@ namespace Infrastructure.Migrations
                     b.ToTable("RoomType");
                 });
 
-            modelBuilder.Entity("Core.Entities.Customer", b =>
-                {
-                    b.HasOne("Core.Entities.Room", "Rooms")
-                        .WithMany()
-                        .HasForeignKey("RoomId");
-
-                    b.Navigation("Rooms");
-                });
-
             modelBuilder.Entity("Core.Entities.Room", b =>
                 {
-                    b.HasOne("Core.Entities.RoomType", "RoomType")
+                    b.HasOne("Core.Entities.RoomType", null)
                         .WithMany("Rooms")
                         .HasForeignKey("RoomTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("RoomType");
                 });
 
             modelBuilder.Entity("Core.Entities.RoomService", b =>

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Exceptions;
 using Core.Models;
 using Core.ServiceInterfaces;
 
@@ -26,6 +27,11 @@ namespace Web.Controllers
         public async Task<IActionResult> GetCustomer(int id)
         {
             var customer = await _customerService.GetCustomerDetailById(id);
+
+            if (customer==null)
+            {
+                return NotFound();
+            }
             return Ok(customer);
         }
 

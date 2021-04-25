@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Exceptions;
 using Core.RepositoryInterfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
@@ -26,6 +27,12 @@ namespace Infrastructure.Repositories
         public virtual async Task<Room> GetAsync(int id)
         {
             var entity = await _dbContext.Set<Room>().FindAsync(id);
+
+            if (entity == null)
+            {
+                throw new NotFoundException("Room Not found");
+            }
+
             return entity;
         }
 

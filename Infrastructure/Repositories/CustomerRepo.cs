@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Exceptions;
 using Core.Models;
 using Core.RepositoryInterfaces;
 using Infrastructure.Data;
@@ -23,6 +24,11 @@ namespace Infrastructure.Repositories
                 .Include(c => c.Services)
                 .ThenInclude(rs=>rs.Room)
                 .FirstOrDefaultAsync();
+
+            if (customer == null)
+            {
+                throw new NotFoundException("Customer Not found");
+            }
 
             return customer;
         }

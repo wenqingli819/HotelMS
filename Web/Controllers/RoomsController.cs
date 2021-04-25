@@ -26,6 +26,12 @@ namespace Web.Controllers
         public async Task<IActionResult> GetRoom(int id)
         {
             var room = await _roomService.GetRoomById(id);
+
+            if (room == null)
+            {
+                return NotFound();
+            }
+
             return Ok(room);
         }
 

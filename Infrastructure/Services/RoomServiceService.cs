@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Exceptions;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
 
@@ -37,7 +38,12 @@ namespace Infrastructure.Services
 
         public async Task<Room> GetRoomById(int id)
         {
-            return await _roomRepo.GetAsync(id);
+            var room = await _roomRepo.GetAsync(id);
+            if (room == null)
+            {
+                throw new NotFoundException("Room Not found");
+            }
+            return room;
         }
 
 

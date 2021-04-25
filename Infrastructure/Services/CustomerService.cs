@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Exceptions;
 using Core.Models;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
@@ -27,6 +28,12 @@ namespace Infrastructure.Services
         public async Task<Customer> GetCustomerDetailById(int id)
         {
             var customer = await _customerRepo.GetAsync(id);
+
+            if (customer == null)
+            {
+                throw new NotFoundException("Customer Not found");
+            }
+
             return customer;
         }
 
