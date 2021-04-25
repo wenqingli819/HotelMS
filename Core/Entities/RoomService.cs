@@ -7,7 +7,6 @@ namespace Core.Entities
     public class RoomService
     {
         public int Id { get; set; }
-        //public int ?RoomId { get; set; }
         public string ?SDesc { get; set; }
         public DateTime ?ServiceDate { get; set; }
         public DateTime? CheckIn { get; set; }

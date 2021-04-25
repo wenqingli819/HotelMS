@@ -9,7 +9,6 @@ namespace Core.Entities
         public int Id { get; set; }
         public int RoomTypeId { get; set; }
         public bool Status { get; set; }
-
     }
 
 }
