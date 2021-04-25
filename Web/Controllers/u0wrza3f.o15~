@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Core.Entities;
-using Core.ServiceInterfaces;
 using Infrastructure.Services;
 
 namespace Web.Controllers
@@ -14,9 +13,9 @@ namespace Web.Controllers
     [ApiController]
     public class RoomTypesController : ControllerBase
     {
-        private readonly IRoomTypeService _roomTypeService;
+        private readonly RoomTypeService _roomTypeService;
 
-        public RoomTypesController(IRoomTypeService roomTypeService)
+        public RoomTypesController(RoomTypeService roomTypeService)
         {
             _roomTypeService = roomTypeService;
         }
