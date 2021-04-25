@@ -7,11 +7,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Core.Entities;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
 using Infrastructure.Data;
@@ -45,8 +40,15 @@ namespace Web
 
             services.AddScoped<ICustomerRepo, CustomerRepo>();
             services.AddScoped<ICustomerService, CustomerService>();
+
             services.AddScoped<IRoomRepo, RoomRepo>();
-            services.AddScoped<IRoomService, RoomServiceService>();
+            services.AddScoped<IRoomService, RoomService>();
+
+            services.AddScoped<IRoomTypeRepo, RoomTypeRepo>();
+            services.AddScoped<IRoomTypeService, RoomTypeService>();
+
+            services.AddScoped<IRoomServiceRepo, RoomServiceRepo>();
+            services.AddScoped<IRoomServiceService, RoomServiceService>();
 
 
             services.AddCors(options =>

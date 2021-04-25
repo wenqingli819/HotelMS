@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
-using Core.Models;
 
 namespace Core.RepositoryInterfaces
 {
-    public interface ICustomerRepo : IAsyncRepository<Customer>
+    public interface IRoomServiceRepo : IAsyncRepository<RoomService>
     {
-        Task<Customer> GetCustomerByEmail(string email);
     }
 }

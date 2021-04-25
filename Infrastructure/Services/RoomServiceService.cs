@@ -1,55 +1,48 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
-using Core.Exceptions;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
 
 namespace Infrastructure.Services
 {
-    public class RoomServiceService : IRoomService
+    public class RoomServiceService : IRoomServiceService
     {
 
-        private readonly IRoomRepo _roomRepo;
+        private readonly IRoomServiceRepo _roomServiceRepo;
 
-        public RoomServiceService(IRoomRepo roomRepo)
+        public RoomServiceService(IRoomServiceRepo roomServiceRepo)
         {
-            _roomRepo = roomRepo;
-        }
-
-        public async Task<Room> AddRoom(Room room)
-        {
-            return await _roomRepo.AddAsync(room);
-        }
-
-        public async Task DeleteRoomById(int id)
-        { 
-            await _roomRepo.DeleteAsync(id);
-        }
-
-        public async Task<IEnumerable<Room>> GetAllRooms()
-        {
-            var rooms = await _roomRepo.ListAllAsync();
-            return rooms;
-        }
-
-        public async Task<Room> GetRoomById(int id)
-        {
-            var room = await _roomRepo.GetAsync(id);
-            if (room == null)
-            {
-                throw new NotFoundException("Room Not found");
-            }
-            return room;
+            _roomServiceRepo = roomServiceRepo;
         }
 
 
-        public async Task<Room> UpdateById(int id, Room room)
+        public async Task<Core.Entities.RoomService> GetRoomServiceById(int id)
         {
-            return await _roomRepo.UpdateAsync(id, room);
+            throw new NotImplementedException();
+        }
+
+        public async Task DeleteRoomServiceById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Core.Entities.RoomService> AddRoomService(Core.Entities.RoomService roomService)
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<IEnumerable<RoomType>> GetAllRoomServices()
+        {
+            throw new NotImplementedException();
+        }
+
+        public async Task<Core.Entities.RoomService> UpdateById(int id, Core.Entities.RoomService roomService)
+        {
+            throw new NotImplementedException();
         }
     }
 }

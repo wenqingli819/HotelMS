@@ -45,10 +45,32 @@ namespace Web.Controllers
 
         [HttpPost]
         [Route("", Name = "PostCustomer")]
-        public async Task<IActionResult> CreateCustomer(RequestCustomerUpdateModel c)
+        public async Task<IActionResult> CreateCustomer(RequestCustomerUpdateModel customer)
         {
-            var createdCustomer = await _customerService.AddCustomer(c);
-            return Ok(createdCustomer);
+            try
+            {
+                if (customer == null)
+                {
+                    return BadRequest();
+                }
+
+                // check whether the customer already exist or not by email
+                var isCustomerExist = await _customerService.CustomerExist(customer);
+                if (isCustomerExist)
+                {
+                    ModelState.AddModelError("email", "Employee email already in use");
+                    return BadRequest(ModelState);
+                }
+
+                var createdCustomer = await _customerService.AddCustomer(customer);
+
+                return Ok(createdCustomer);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
         }
     
 

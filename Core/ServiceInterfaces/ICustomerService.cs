@@ -16,5 +16,7 @@ namespace Core.ServiceInterfaces
         Task<IEnumerable<Customer>> GetAllCustomers();
         Task<Customer> UpdateById(int id, RequestCustomerUpdateModel c);
 
+        Task<bool> CustomerExist(RequestCustomerUpdateModel customer);
+
     }
 }

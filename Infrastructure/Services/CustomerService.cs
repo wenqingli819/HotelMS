@@ -69,5 +69,17 @@ namespace Infrastructure.Services
             var createdCustomer = await _customerRepo.AddAsync(dbCustomer);
             return createdCustomer;
         }
+
+
+        public async Task<bool> CustomerExist (RequestCustomerUpdateModel customer)
+        {
+            var email = customer.Email;
+            var c = await _customerRepo.GetCustomerByEmail(email);
+            if (c == null)
+            {
+                return false;
+            }
+            return true;
+        }
     }
 }
