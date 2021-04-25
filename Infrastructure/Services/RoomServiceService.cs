@@ -4,8 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Entities;
+using Core.Models;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
+
 
 namespace Infrastructure.Services
 {
@@ -22,27 +24,51 @@ namespace Infrastructure.Services
 
         public async Task<Core.Entities.RoomService> GetRoomServiceById(int id)
         {
-            throw new NotImplementedException();
+            return await _roomServiceRepo.GetAsync(id);
         }
 
         public async Task DeleteRoomServiceById(int id)
-        {
-            throw new NotImplementedException();
+        { 
+            await _roomServiceRepo.DeleteAsync(id);
         }
 
-        public async Task<Core.Entities.RoomService> AddRoomService(Core.Entities.RoomService roomService)
+        public async Task<Core.Entities.RoomService> AddRoomService(RequestServiceAddModel roomService)
         {
-            throw new NotImplementedException();
+            var dbService = new Core.Entities.RoomService()
+            {
+                RoomId = roomService.RoomId,
+                SDesc = roomService.SDesc,
+                ServiceDate = roomService.ServiceDate,
+                CheckIn = roomService.CheckIn,
+                TotalPersons = roomService.TotalPersons,
+                BookingDays = roomService.BookingDays,
+                Advance = roomService.Advance,
+                Amount = roomService.Amount
+            };
+
+            return await _roomServiceRepo.AddAsync(dbService);
         }
 
-        public async Task<IEnumerable<RoomType>> GetAllRoomServices()
+        public async Task<IEnumerable<Core.Entities.RoomService>> GetAllRoomServices()
         {
-            throw new NotImplementedException();
+            return await _roomServiceRepo.ListAllAsync();
         }
 
-        public async Task<Core.Entities.RoomService> UpdateById(int id, Core.Entities.RoomService roomService)
+        public async Task<Core.Entities.RoomService> UpdateById(int id, RequestServiceAddModel roomService)
         {
-            throw new NotImplementedException();
+            // convert RequestServiceAddModel -> RoomService
+            var dbService = new Core.Entities.RoomService()
+            {
+                RoomId = roomService.RoomId,
+                SDesc = roomService.SDesc,
+                ServiceDate = roomService.ServiceDate,
+                CheckIn = roomService.CheckIn,
+                TotalPersons = roomService.TotalPersons,
+                BookingDays = roomService.BookingDays,
+                Advance = roomService.Advance,
+                Amount = roomService.Amount
+            };
+            return await _roomServiceRepo.UpdateAsync(id, dbService);
         }
     }
 }

@@ -71,6 +71,7 @@ namespace Infrastructure.Repositories
             return await _dbContext.Customers.FirstOrDefaultAsync(u => u.Email == email);
         }
 
+        
         public override async Task<Customer> UpdateAsync(int id, Customer c)
         {
             var customer = _dbContext.Set<Customer>().Find(id);

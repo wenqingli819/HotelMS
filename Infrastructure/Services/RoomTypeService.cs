@@ -20,27 +20,27 @@ namespace Infrastructure.Services
 
         public async Task<RoomType> GetRoomTypeById(int id)
         {
-            throw new NotImplementedException();
+            return await _roomTypeRepo.GetAsync(id);
         }
 
         public async Task DeleteRoomTypeById(int id)
-        {
-            throw new NotImplementedException();
+        { 
+            await _roomTypeRepo.DeleteAsync(id);
         }
 
         public async Task<RoomType> AddRoomType(RoomType roomType)
         {
-            throw new NotImplementedException();
+            return await _roomTypeRepo.AddAsync(roomType);
         }
 
         public async Task<IEnumerable<RoomType>> GetAllRoomTypes()
         {
-            throw new NotImplementedException();
+            return await _roomTypeRepo.ListAllAsync();
         }
 
         public async Task<RoomType> UpdateById(int id, RoomType roomType)
         {
-            throw new NotImplementedException();
+            return await _roomTypeRepo.UpdateAsync(id, roomType);
         }
     }
 }
