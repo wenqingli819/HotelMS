@@ -11,6 +11,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Core.Entities;
 using Core.RepositoryInterfaces;
 using Core.ServiceInterfaces;
 using Infrastructure.Data;
@@ -44,6 +45,8 @@ namespace Web
 
             services.AddScoped<ICustomerRepo, CustomerRepo>();
             services.AddScoped<ICustomerService, CustomerService>();
+            services.AddScoped<IRoomRepo, RoomRepo>();
+            services.AddScoped<IRoomService, RoomServiceService>();
 
 
             services.AddCors(options =>
