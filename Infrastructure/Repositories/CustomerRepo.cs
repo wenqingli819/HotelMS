@@ -78,7 +78,6 @@ namespace Infrastructure.Repositories
             if (customer != null)
             {
                 customer.CName = c.CName;
-                customer.Email = c.Email;
                 customer.Address = c.Address;
                 customer.Phone = c.Phone;
                 int affected = await _dbContext.SaveChangesAsync();

@@ -37,12 +37,11 @@ namespace Infrastructure.Services
             return customer;
         }
 
-        public async Task<Customer> UpdateById(int id, RequestCustomerUpdateModel requestModel)
+        public async Task<Customer> UpdateById(int id, RequestCustomerUpdateNoEmail requestModel)
         {
             var dbCustomer = new Customer
             {
                 CName = requestModel.CName,
-                Email = requestModel.Email,
                 Address = requestModel.Address,
                 Phone = requestModel.Phone
             };
@@ -61,9 +60,9 @@ namespace Infrastructure.Services
             var dbCustomer = new Customer
             {
                 CName = requestModel.CName,
-                Email = requestModel.Email,
                 Address = requestModel.Address,
-                Phone = requestModel.Phone
+                Phone = requestModel.Phone,
+                Email = requestModel.Email
             };
 
             var createdCustomer = await _customerRepo.AddAsync(dbCustomer);

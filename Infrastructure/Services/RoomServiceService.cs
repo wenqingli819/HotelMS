@@ -37,6 +37,7 @@ namespace Infrastructure.Services
             var dbService = new Core.Entities.RoomService()
             {
                 RoomId = roomService.RoomId,
+                CustomerId = roomService.CustomerId,
                 SDesc = roomService.SDesc,
                 ServiceDate = roomService.ServiceDate,
                 CheckIn = roomService.CheckIn,
@@ -60,6 +61,7 @@ namespace Infrastructure.Services
             var dbService = new Core.Entities.RoomService()
             {
                 RoomId = roomService.RoomId,
+                CustomerId = roomService.CustomerId,
                 SDesc = roomService.SDesc,
                 ServiceDate = roomService.ServiceDate,
                 CheckIn = roomService.CheckIn,

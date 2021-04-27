@@ -48,6 +48,7 @@ namespace Infrastructure.Repositories
             if (dbRoomService != null)
             {
                 dbRoomService.RoomId = rc.RoomId;
+                dbRoomService.CustomerId = rc.CustomerId;
                 dbRoomService.SDesc = rc.SDesc;
                 dbRoomService.ServiceDate = rc.ServiceDate;
                 dbRoomService.CheckIn = rc.CheckIn;

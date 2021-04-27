@@ -85,7 +85,7 @@ namespace Web.Controllers
 
         [HttpPut]
         [Route("{id:int}", Name = "UpdateCustomer")]
-        public async Task<IActionResult> UpdateCustomer(int id, RequestCustomerUpdateNoEmail c)
+        public async Task<IActionResult> UpdateCustomer(int id, RequestCustomerUpdateModel c)
         {
             var updatedCustomer = await _customerService.UpdateById(id,c);
             return Ok(updatedCustomer);

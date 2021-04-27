@@ -9,6 +9,7 @@ namespace Core.Models
     public class RequestServiceAddModel
     {
         public int RoomId { get; set; }
+        public int CustomerId { get; set; }
         public string? SDesc { get; set; }
         public DateTime? ServiceDate { get; set; }
         public DateTime? CheckIn { get; set; }
